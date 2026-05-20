@@ -1,0 +1,162 @@
+{
+  "system_role": "Expert Senior React Developer, Enterprise Data Visualization Engineer, and UI/UX Designer",
+  "project_context": "Building the frontend for an Enterprise 'Zero-Trust Auditing Platform'. The backend is a Python Flask server (at http://localhost:5000 with routes in /backend/main.py). The app scans Google Workspace Apps Script code for OAuth permission sprawl, intent hallucination, and calculates Predictive Blast Radius.",
+  "strict_directives": {
+    "data_handling": "ABSOLUTELY NO HARDCODED MOCK DATA IN THE FINAL UI. Build robust loading states using complex Skeleton loaders (e.g., pulsing rows for tables, greyed-out bounding boxes for charts) and professional 'No Data Available / Baseline Stable' empty states.",
+    "aesthetic_rules": "STRICTLY NO 'vibecoded' aesthetics. NO neon colors, NO hot pink, NO glowing gradients, NO glassmorphism. The design MUST replicate Google Cloud Platform (GCP) data-density combined with Apple macOS flat minimalism. It must look like a high-end B2B cybersecurity tool.",
+    "technical_stack": "React, Tailwind CSS, Recharts (for complex analytics), React-Force-Graph (for network topology), and Lucide React (for crisp iconography)."
+  },
+  "design_system": {
+    "typography": "Inter or Roboto. Crisp, highly legible, strictly sans-serif.",
+    "color_palette": {
+      "background_main": "#F8F9FA (Very light gray canvas)",
+      "surface_card": "#FFFFFF (Pure white cards. 1px solid #E0E0E0 borders. NO drop shadows.)",
+      "text_primary": "#202124 (Dark slate)",
+      "text_secondary": "#5F6368 (Medium gray)",
+      "primary_action": "#1A73E8 (Google Blue)",
+      "status_danger": "#D32F2F (Deep Red - Restricted/Underprivileged)",
+      "status_warning": "#FBC02D (Solid Yellow - Sensitive/Overprivileged)",
+      "status_safe": "#388E3C (Forest Green - Non-Sensitive/Perfect)"
+    }
+  },
+  "api_integration_map": {
+    "base_url": "http://localhost:5000",
+    "router_context": "Use Axios. Wrap all fetches in Try/Catch. Display sleek error boundary cards if Flask is unreachable."
+  },
+  "modules_to_build": [
+    {
+      "module_name": "1. OVERVIEW",
+      "features": [
+        {
+          "name": "Security Posture Dashboard",
+          "api_endpoint": "GET /api/dashboard",
+          "visualizations": [
+            "1. RES KPI Widget: A massive, clean numeric display of the 'Risk Exposure Score' with a 30-day Sparkline (mini line-chart) next to it showing the historical trend.",
+            "2. Posture Quadrant (Recharts Scatter): X-axis='Scope Sprawl', Y-axis='Intent Mismatch'. Plot scripts as dots colored by severity.",
+            "3. Risk Distribution Bar: A horizontal stacked bar chart showing the ratio of Red vs Yellow vs Green scripts across the organization."
+          ]
+        },
+        {
+          "name": "Recent Anomalies",
+          "api_endpoint": "GET /api/anomalies",
+          "visualizations": [
+            "1. Anomaly Heatmap: A GitHub-style contribution calendar showing anomaly frequency over the last 30 days (darker red = more anomalies).",
+            "2. Live Threat Feed: A highly dense, auto-scrolling list of outputs from the IsolationForest ML model with timestamp, script name, and 'Anomaly Score' badge."
+          ]
+        }
+      ]
+    },
+    {
+      "module_name": "2. CODE RECONCILIATION",
+      "features": [
+        {
+          "name": "Repository Scanner",
+          "api_endpoint": "POST /api/scan/upload",
+          "visualizations": [
+            "1. Ingestion Zone: A clean, dashed-border drag-and-drop zone.",
+            "2. Processing Stepper: When uploading, show a horizontal MUI-style Stepper (Extracting Files -> AST Parsing -> NLP Embedding -> Reconciling Math) to visualize the backend Python pipeline."
+          ]
+        },
+        {
+          "name": "Workspace File Tree",
+          "api_endpoint": "GET /api/scan/<scan_id>/tree",
+          "visualizations": [
+            "1. Interactive Directory: A collapsible file tree. .gs files have a severity color dot and a Triad icon (Caution, Shield, or Unlocked Padlock).",
+            "2. Sprawl Sunburst / Treemap: Beside the tree, render a Recharts Treemap visualizing which folders/files consume the highest weight of permissions visually by box size."
+          ]
+        },
+        {
+          "name": "Split-Pane Inspector",
+          "api_endpoint": "GET /api/scan/file/<file_id>",
+          "visualizations": [
+            "1. Dual-Window Code Editor: Left pane shows Apps Script code with AST execution paths highlighted. Right pane shows appsscript.json.",
+            "2. NLP Intent Box: A clean floating card above the left pane displaying the AI-extracted 'Developer Intent'.",
+            "3. JSON Diff Overlay: In the right pane, highlight the exact JSON array items causing the sprawl in red, similar to a GitHub PR diff viewer."
+          ]
+        }
+      ]
+    },
+    {
+      "module_name": "3. BLAST RADIUS",
+      "features": [
+        {
+          "name": "Shadow Automation Graph",
+          "api_endpoint": "GET /api/graph/topology",
+          "visualizations": [
+            "1. Network Topology Map: A WebGL/SVG node-link canvas. Nodes = Users/Scripts/Files. Edges = OAuth permissions. Clicking a node highlights its direct connections and dims the rest of the graph."
+          ]
+        },
+        {
+          "name": "Exposure Simulator",
+          "api_endpoint": "POST /api/graph/simulate",
+          "visualizations": [
+            "1. Blast Radius Gauge: A semi-circle Donut Chart displaying the percentage of total corporate data exposed if the selected script is compromised.",
+            "2. Downstream Impact Tree: A hierarchical list showing the exact BFS-traversed files the attacker could reach via lateral movement."
+          ]
+        }
+      ]
+    },
+    {
+      "module_name": "4. TEMPORAL RISK",
+      "features": [
+        {
+          "name": "JIT Policies",
+          "api_endpoint": "GET /api/policies/jit",
+          "visualizations": [
+            "1. Policy Data Grid: CRUD table for Time-to-Live rules.",
+            "2. Expiration Gantt Chart: A timeline visualization showing active OAuth tokens as horizontal bars, indicating exactly when they are scheduled to auto-revoke based on JIT rules."
+          ]
+        },
+        {
+          "name": "Scope Decay Analytics",
+          "api_endpoint": "GET /api/analytics/decay",
+          "visualizations": [
+            "1. Exponential Decay Curves: Multi-line Recharts graph. X-axis=Days, Y-axis=Usage Probability. Lines curve downwards toward zero. Add a shaded 'Area Under Curve' (AUC) in light red to represent the 'Unnecessary Risk Window'."
+          ]
+        }
+      ]
+    },
+    {
+      "module_name": "5. REMEDIATION CENTER",
+      "features": [
+        {
+          "name": "Pull Request Manager",
+          "api_endpoint": "POST /api/pr/generate",
+          "visualizations": [
+            "1. Action Queue: A table of AI-generated fixes. Include a primary 'Merge PR' button.",
+            "2. Inline Diff Viewer: Clicking a row expands an inline code-diff (red background for removed scopes, green for added/retained scopes) so developers can review the AST JSON swap before merging."
+          ]
+        },
+        {
+          "name": "Friction Analytics",
+          "api_endpoint": "POST /api/webhooks/github",
+          "visualizations": [
+            "1. Acceptance Rate Donut: A sleek Recharts Donut Chart (Merged vs Rejected).",
+            "2. Time-to-Remediate (TTR) Chart: A stacked bar chart tracking how fast developers accept PRs over the last 8 weeks, proving the tool's DevEx efficiency."
+          ]
+        }
+      ]
+    },
+    {
+      "module_name": "6. AUDIT & COMPLIANCE",
+      "features": [
+        {
+          "name": "Scope Ledger",
+          "api_endpoint": "GET /api/audit/ledger",
+          "visualizations": [
+            "1. Immutable Data Grid: High-density, read-only table. Columns: Timestamp, Actor, Action, Target, SHA-256 Hash. STRICT RULE: NO edit/delete buttons.",
+            "2. Event Timeline Scrubber: A mini horizontal bar chart at the top of the table showing log volume by day. Clicking a bar filters the table to that day."
+          ]
+        },
+        {
+          "name": "Time Forensics",
+          "api_endpoint": "GET /api/audit/forensics",
+          "visualizations": [
+            "1. Time Machine UI: A Date-Picker combined with media-player controls (Rewind, Play, Fast Forward).",
+            "2. Reconstructed State View: Selecting a historical date triggers a skeleton loading state, then 'rewinds' and renders the exact Posture Quadrant and File Tree as it mathematically existed on that specific millisecond based on event-sourcing data."
+          ]
+        }
+      ]
+    }
+  ]
+}
